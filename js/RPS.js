@@ -1,5 +1,7 @@
+let round;
+let quitgame;
 function getplayermove(){
-    let playermove = prompt("Rock, Paper, Scissors!");
+    let playermove = prompt("Rock, Paper, Scissors!" + "\nRound: " + round +  "\n" + "'quit' to quit.");
     playermove = playermove.toLowerCase();
     while (playermove === null || (playermove != "rock" && playermove != "paper" && playermove != "scissors" && playermove != "quit"))
     playermove = prompt("Enter a correct move, not " + '"' + playermove + '"' + ".")
@@ -47,20 +49,25 @@ function WinCon(playermove,cpumove){
             return "DRAW";
             break;
         case "quit":
-            return "quitgame";
+            quitgame = true;
             break;
     }
 }
 function game(){
     let playerscore = 0;
     let cpuscore = 0; 
+    let draws = 0;
     let playermove;
     let cpumove;
     let WinConMove;
-    for (let i = 0; i < 5; i++){
+    quitgame = false;
+    for (let i = 1; i <= 5; i++){
+        round = i;
         playermove = getplayermove();
         cpumove = getcpumove();
         WinConMove = WinCon(playermove,cpumove);
+        if (quitgame)
+            return;
         if (WinConMove == playermove){
             playerscore++;
             alert("You Won by playing " + playermove + " against their " + cpumove);
@@ -69,11 +76,11 @@ function game(){
             cpuscore++;
             alert("CPU Won by playing " + cpumove + " against your " + playermove);
         }
-        else if (WinConMove == "quitgame")
-            return;
-        else
-            alert("Tie! Both of you played " + playermove);
-        alert("Your score: " + playerscore + "\nbeep boop's score: " + cpuscore);
+        else{
+            draws++;
+            alert("Draw! Both of you played " + playermove);
+        }
+        alert("Your score: " + playerscore + "\nbeep boop's score: " + cpuscore + "\nDraws: " + draws);
     }
     if (playerscore > cpuscore)
         alert("You won the round!");
@@ -81,6 +88,13 @@ function game(){
         alert("CPU won the round!");
     else
         alert("It is a draw.")
-    alert("final score: " + playerscore + " : " + cpuscore);
+    alert("final score: " + playerscore + " : " + cpuscore + " : " + draws);
 }
+let playagain;
+do{
 game();
+if (quitgame)
+break;
+else
+confirm("play again?") == true? playagain = true:playagain = false;
+}while(playagain);
