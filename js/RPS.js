@@ -23,10 +23,54 @@ function getcpumove(){
     }
     return cpumove;
 }
-function WinCon(){
-    
+function WinCon(playermove,cpumove){
+    switch(playermove){
+        case "rock":
+            if (cpumove == "scissors")
+            return playermove;
+            else if (cpu == "paper")
+            return cpumove;
+            else
+            return "DRAW";
+            break;
+        case "paper":
+            if (cpumove == "rock")
+            return playermove;
+            else if (cpumove == "scissors")
+            return cpumove;
+            else
+            return "DRAW";
+            break;
+        case "scissors":
+            if (cpumove == "paper")
+            return playermove;
+            else if (cpumove == "rock")
+            return cpumove;
+            else
+            return "DRAW";
+            break;
+    }
 }
-for (let i = 0; i < 15; i++){
-    let x = getcpumove();
-    console.log(x);
+function game(){
+    let playerscore;
+    let cpuscore;
+    let playermove;
+    let cpumove;
+    let WinConMove;
+    for (let i = 0; i < 5; i++){
+        playermove = getplayermove();
+        cpumove = getcpumove();
+        WinConMove = WinCon(playermove,cpumove);
+        if (WinConMove == playermove){
+            playerscore++;
+            alert("Player won by playing " + playermove + " and it beats " + cpumove);
+        }
+        else if (WinConMove == cpumove){
+            cpuscore++;
+            alert("CPU won by playing " + cpumove + " and it beats " + playermove);
+        }
+        else
+            alert("It's a tie! Both moves were " + WinConMove);
+    }
 }
+game();
