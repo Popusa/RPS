@@ -1,7 +1,7 @@
 function getplayermove(){
     let playermove = prompt("Enter a move, Rock, Paper, or Scissors.");
     playermove = playermove.toLowerCase();
-    if (playermove != "rock" && playermove != "paper" && playermove != "sicssors"){
+    if (playermove != "rock" && playermove != "paper" && playermove != "scissors"){
         alert("Enter a valid move.");
         getplayermove();
     }
@@ -28,7 +28,7 @@ function WinCon(playermove,cpumove){
         case "rock":
             if (cpumove == "scissors")
             return playermove;
-            else if (cpu == "paper")
+            else if (cpumove == "paper")
             return cpumove;
             else
             return "DRAW";
@@ -52,8 +52,8 @@ function WinCon(playermove,cpumove){
     }
 }
 function game(){
-    let playerscore;
-    let cpuscore;
+    let playerscore = 0;
+    let cpuscore = 0; 
     let playermove;
     let cpumove;
     let WinConMove;
@@ -70,7 +70,8 @@ function game(){
             alert("CPU won by playing " + cpumove + " and it beats " + playermove);
         }
         else
-            alert("It's a tie! Both moves were " + WinConMove);
+            alert("It's a tie! Both moves were " + playermove);
+        alert("Player's score: " + playerscore + "\n CPU's score: " + cpuscore);    
     }
 }
 game();
