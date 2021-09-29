@@ -1,12 +1,9 @@
 function getplayermove(){
-    let playermove = prompt("Enter a move, Rock, Paper, or Scissors.");
+    let playermove = prompt("Rock, Paper, Scissors!");
     playermove = playermove.toLowerCase();
-    if (playermove != "rock" && playermove != "paper" && playermove != "scissors"){
-        alert("Enter a valid move.");
-        getplayermove();
-    }
-    else
-        return playermove;
+    while (playermove === null || (playermove != "rock" && playermove != "paper" && playermove != "scissors" && playermove != "quit"))
+    playermove = prompt("Enter a correct move, not " + '"' + playermove + '"' + ".")
+    return playermove;
 }
 function getcpumove(){
     let cpumove = Math.floor(Math.random() * 3) + 1
@@ -49,6 +46,9 @@ function WinCon(playermove,cpumove){
             else
             return "DRAW";
             break;
+        case "quit":
+            return "quitgame";
+            break;
     }
 }
 function game(){
@@ -63,15 +63,24 @@ function game(){
         WinConMove = WinCon(playermove,cpumove);
         if (WinConMove == playermove){
             playerscore++;
-            alert("Player won by playing " + playermove + " and it beats " + cpumove);
+            alert("You Won by playing " + playermove + " against their " + cpumove);
         }
         else if (WinConMove == cpumove){
             cpuscore++;
-            alert("CPU won by playing " + cpumove + " and it beats " + playermove);
+            alert("CPU Won by playing " + cpumove + " against your " + playermove);
         }
+        else if (WinConMove == "quitgame")
+            return;
         else
-            alert("It's a tie! Both moves were " + playermove);
-        alert("Player's score: " + playerscore + "\n CPU's score: " + cpuscore);    
+            alert("Tie! Both of you played " + playermove);
+        alert("Your score: " + playerscore + "\nbeep boop's score: " + cpuscore);
     }
+    if (playerscore > cpuscore)
+        alert("You won the round!");
+    else if (playerscore < cpuscore)
+        alert("CPU won the round!");
+    else
+        alert("It is a draw.")
+    alert("final score: " + playerscore + " : " + cpuscore);
 }
 game();
