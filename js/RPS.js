@@ -1,11 +1,11 @@
 let round;
 let quitgame;
+let playermove;
 function getplayermove(){
-    let playermove = prompt("Rock, Paper, Scissors!" + "\nRound: " + round +  "\n" + "'quit' to quit.");
-    playermove = playermove.toLowerCase();
-    while (playermove === null || (playermove != "rock" && playermove != "paper" && playermove != "scissors" && playermove != "quit"))
-    playermove = prompt("Enter a correct move, not " + '"' + playermove + '"' + ".")
     return playermove;
+}
+function SetPlayerMove(choice){
+    playermove = choice;
 }
 function getcpumove(){
     let cpumove = Math.floor(Math.random() * 3) + 1
@@ -57,7 +57,6 @@ function game(){
     let playerscore = 0;
     let cpuscore = 0; 
     let draws = 0;
-    let playermove;
     let cpumove;
     let WinConMove;
     quitgame = false;
@@ -98,3 +97,6 @@ break;
 else
 confirm("play again?") == true? playagain = true:playagain = false;
 }while(playagain);
+RockChoice.addEventListener('click',SetPlayerMove("Rock"));
+PaperChoice.addEventListener('click',SetPlayerMove("Paper"));
+ScissorsChoice.addEventListener('click',SetPlayerMove("Scissors"));
