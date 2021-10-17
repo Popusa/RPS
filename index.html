@@ -5,20 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "style.css">
-    <script type="text/javascript" src="js/RPS.js"></script>
     <title>Rock Paper Sissors</title>
 </head>
 <body>
     <header>
-
+        <p>ROCK! PAPER! SCISSORS! First to Five Wins!</p>
     </header>
     <div class = "main">
-        <button id = "RockChoice">Rock</button>
-        <button id = "PaperChoice">Paper</button>
-        <button id = "ScissorsChoice">Scissors</button>
+        <button id = "RockChoice"><img src="Images/rock.png" width = 200 height = 200> </button>
+        <button id = "PaperChoice"><img src="Images/paper.png" width = 200 height = 200></button>
+        <button id = "ScissorsChoice"><img src="Images/scis.png" width = 200 height = 200></button>
+    </div>
+    <div class = "score">
+        <p class id= "round">Round: </p>
+        <p class id= "player">Your Score: </p>
+        <p class id= "cpu">Cpu's Score: </p>
+        <p class id= "draw">Draws: </p>
+        <button id = "reset">Reset</button>
     </div>
     <footer>
-        
+ Made by Daniel Youssef &copy;       
     </footer>
 </body>
+<script src="js/RPS.js"></script> 
 </html>

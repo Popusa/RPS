@@ -1,11 +1,26 @@
-let round;
-let quitgame;
-let playermove;
-function getplayermove(){
-    return playermove;
-}
-function SetPlayerMove(choice){
-    playermove = choice;
+const Rocky = document.getElementById("RockChoice");
+const Papey = document.getElementById("PaperChoice");
+const Scissory = document.getElementById("ScissorsChoice");
+const mainscore = document.getElementById('player');
+const aiscore = document.getElementById('cpu');
+const drawscore = document.getElementById('draw');
+const rounds = document.getElementById('round');
+const resetbutton = document.getElementById('reset');
+let playerscore = 0;
+let cpuscore = 0; 
+let draws = 0;
+let round = 1;
+let GameEnded = false;
+function reset(){
+     playerscore = 0;
+     cpuscore = 0; 
+     draws = 0;
+     round = 1;
+     GameEnded = false; 
+     mainscore.innerText = "Your Score: " + playerscore;
+     aiscore.innerText = "Cpu's Score: " + cpuscore;
+     drawscore.innerText = "Draws: " + draws;
+     rounds.innerText = "Round: " + round;
 }
 function getcpumove(){
     let cpumove = Math.floor(Math.random() * 3) + 1
@@ -53,50 +68,59 @@ function WinCon(playermove,cpumove){
             break;
     }
 }
-function game(){
-    let playerscore = 0;
-    let cpuscore = 0; 
-    let draws = 0;
+function game(playermove){
     let cpumove;
     let WinConMove;
-    quitgame = false;
-    for (let i = 1; i <= 5; i++){
-        round = i;
-        playermove = getplayermove();
         cpumove = getcpumove();
         WinConMove = WinCon(playermove,cpumove);
-        if (quitgame)
-            return;
         if (WinConMove == playermove){
             playerscore++;
-            alert("You Won by playing " + playermove + " against their " + cpumove);
+            mainscore.innerText = "Your Score: " + playerscore;
+            rounds.innerText = "Round: " + round + " Won!";
         }
         else if (WinConMove == cpumove){
             cpuscore++;
-            alert("CPU Won by playing " + cpumove + " against your " + playermove);
+            aiscore.innerText = "Cpu's Score: " + cpuscore;
+            rounds.innerText = "Round: " + round + " Lost!";
         }
         else{
             draws++;
-            alert("Draw! Both of you played " + playermove);
+            drawscore.innerText = "Draws: " + draws;
+            rounds.innerText = "Round: " + round + " Draw!";
         }
-        alert("Your score: " + playerscore + "\nbeep boop's score: " + cpuscore + "\nDraws: " + draws);
-    }
-    if (playerscore > cpuscore)
-        alert("You won the round!");
-    else if (playerscore < cpuscore)
-        alert("CPU won the round!");
-    else
-        alert("It is a draw.")
-    alert("final score: " + playerscore + " : " + cpuscore + " : " + draws);
+        round++;
+        if (playerscore == 5){
+        rounds.innerText = "Player Won!";
+        GameEnded = true;       
+        }
+        else if (cpuscore == 5){
+        rounds.innerText = "Cpu Won!";
+        GameEnded = true;
+        }
 }
-let playagain;
-do{
-game();
-if (quitgame)
-break;
-else
-confirm("play again?") == true? playagain = true:playagain = false;
-}while(playagain);
-RockChoice.addEventListener('click',SetPlayerMove("Rock"));
-PaperChoice.addEventListener('click',SetPlayerMove("Paper"));
-ScissorsChoice.addEventListener('click',SetPlayerMove("Scissors"));
+resetbutton.addEventListener('click',reset);
+Rocky.addEventListener('click',function(){
+    if (GameEnded)
+    return;
+    else{
+    console.log("You have chosen... rock.");
+    game("rock");
+    }
+});
+Papey.addEventListener('click',function(){
+    if (GameEnded)
+    return;
+    else{
+    console.log("You have chosen... paper.");
+    game("paper");
+    }
+});
+Scissory.addEventListener('click',function(){
+    if (GameEnded)
+    return;
+    else{
+    console.log("You have chosen... scissors.");
+    game("scissors");
+    }
+});
+rounds.innerText = "Round: " + round;

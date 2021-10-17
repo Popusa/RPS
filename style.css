@@ -1,0 +1,38 @@
+header,footer{
+background-color:yellow;
+color:blue;
+padding:16px;
+text-align:center;
+}
+footer{
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+}
+body{
+background-color:black;
+}
+.main{
+    display: flex;           
+    justify-content: space-around; 
+    align-items: center;     
+    height:500px;
+    background-color: white;
+    margin:24px;
+}
+.score{
+    display:flex;
+    flex-direction: column;
+    margin: auto;
+    background-color:white;
+    width:10%;
+    color: black;
+}
+.player,.cpu,.draw{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-self:center;
+}
