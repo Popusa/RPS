@@ -124,3 +124,6 @@ Scissory.addEventListener('click',function(){
     }
 });
 rounds.innerText = "Round: " + round;
+mainscore.innerText = "Your Score: " + playerscore;
+aiscore.innerText = "Cpu's Score: " + cpuscore;
+drawscore.innerText = "Draws: " + draws;

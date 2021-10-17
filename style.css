@@ -4,6 +4,10 @@ color:blue;
 padding:16px;
 text-align:center;
 }
+header{
+    left:0px;
+    bottom:0px;
+}
 footer{
     position:fixed;
     left:0px;
@@ -13,6 +17,7 @@ footer{
 }
 body{
 background-color:black;
+margin:0;
 }
 .main{
     display: flex;           
@@ -27,7 +32,7 @@ background-color:black;
     flex-direction: column;
     margin: auto;
     background-color:white;
-    width:10%;
+    width:15%;
     color: black;
 }
 .player,.cpu,.draw{
