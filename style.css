@@ -4,10 +4,6 @@ color:blue;
 padding:16px;
 text-align:center;
 }
-header{
-    left:0px;
-    bottom:0px;
-}
 footer{
     position:fixed;
     left:0px;
@@ -25,7 +21,7 @@ margin:0;
     align-items: center;     
     height:500px;
     background-color: white;
-    margin:24px;
+    margin:20px;
 }
 .score{
     display:flex;

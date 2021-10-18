@@ -76,17 +76,17 @@ function game(playermove){
         if (WinConMove == playermove){
             playerscore++;
             mainscore.innerText = "Your Score: " + playerscore;
-            rounds.innerText = "Round: " + round + " Won!";
+            rounds.innerText = "Round: " + round + " Won!" + "\n" + playermove + " beats " + cpumove;
         }
         else if (WinConMove == cpumove){
             cpuscore++;
             aiscore.innerText = "Cpu's Score: " + cpuscore;
-            rounds.innerText = "Round: " + round + " Lost!";
+            rounds.innerText = "Round: " + round + " Lost!" + "\n" + cpumove + " beats " + playermove;
         }
         else{
             draws++;
             drawscore.innerText = "Draws: " + draws;
-            rounds.innerText = "Round: " + round + " Draw!";
+            rounds.innerText = "Round: " + round + " Draw!" + "\n" + playermove + " on " + playermove +" action!";
         }
         round++;
         if (playerscore == 5){
