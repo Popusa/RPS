@@ -1,6 +1,6 @@
-const Rocky = document.getElementById("RockChoice");
-const Papey = document.getElementById("PaperChoice");
-const Scissory = document.getElementById("ScissorsChoice");
+const Rocky = document.querySelector("#RockChoice");
+const Papey = document.querySelector("#PaperChoice");
+const Scissory = document.querySelector("#ScissorsChoice");
 const mainscore = document.getElementById('player');
 const aiscore = document.getElementById('cpu');
 const drawscore = document.getElementById('draw');
@@ -90,11 +90,11 @@ function game(playermove){
         }
         round++;
         if (playerscore == 5){
-        rounds.innerText = "Player Won!";
+        rounds.innerText = "Player Won in " + (round - 1) + " rounds!";
         GameEnded = true;       
         }
         else if (cpuscore == 5){
-        rounds.innerText = "Cpu Won!";
+        rounds.innerText = "Cpu Won in " + (round - 1) + " rounds!";
         GameEnded = true;
         }
 }
