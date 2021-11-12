@@ -12,9 +12,14 @@ footer{
     width:100%;
 }
 body{
-background-color:black;
-margin:0;
-}
+    background-color:black;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
 .main{
     display: flex;           
     justify-content: space-around; 
